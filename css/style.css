@@ -4,6 +4,9 @@
 --color-Sub01: #86AB89;
 --color-Sub02: #CBE2B5;
 --color-Sub03: #E7FBE6;
+
+--color-black: #222;
+--color-white: #e0e6ea;
 /* サイズ指定 */
 --size-XL: 4rem;
 --size-L: 2rem;
@@ -11,8 +14,16 @@
 --size-S: 1rem;
 }
 
-.hero_wrapper,.introduction_wrapper,.products_wrapper,.keyvisual_wrapper{
+.hero-wrapper,.message-wrapper,.products-wrapper,.keyvisual-wrapper{
 height: 100vh;
+}
+
+.message-header,.products-header{
+width: auto;
+margin: auto;
+margin-top: var(--size-XL);
+text-align: center;
+font-size: var(--size-L);
 }
 
 img{
@@ -21,7 +32,7 @@ width: 100%;
 
 /* ナビゲーションバー
 ======================== */
-.nav_wrapper{
+.nav-wrapper{
 display: flex;
 width: 100%;
 height: auto;
@@ -42,15 +53,16 @@ width: 100%;
 }
 
 /* グローバルナビゲーション */
-.gnav_list{
+.gnav-list{
 display: flex;
 gap: var(--size-L);
 }
-.gnav_item{
+.gnav-item{
 display: flex;
 position: relative;
+color: var(--color-black);
 }
-.gnav_item::after{
+.gnav-item::after{
 content: "";
 display: inline-block;
 background: url(../img/svg/triangle.svg) no-repeat center;
@@ -59,7 +71,7 @@ width: 20px;
 height: auto;
 transition: transform 0.3s ease;
 }
-.gnav_item:hover::after{
+.gnav-item:hover::after{
 transform:rotate(180deg);
 }
 
@@ -79,7 +91,7 @@ border-radius: 4px;
 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 z-index: 10;
 }
-.gnav_item:hover .dropdown{
+.gnav-item:hover .dropdown{
 opacity: 1;
 visibility: visible;
 transform: translateY(0);
@@ -94,26 +106,26 @@ background: var(--color-Sub03);
 }
 
 /* ソーシャルアイコン集 */
-.social_list{
+.social-list{
 display: flex;
 gap: var(--size-M);
 }
-.social_item{
+.social-item{
 width: 30px;
 aspect-ratio: 1;
 }
-.social_item img{
+.social-item img{
 width: 100%;
 height: 100%;
 }
 
 /* メインビジュアル
 ======================== */
-.hero_wrapper{
+.hero-wrapper{
 position: relative;
 }
 
-.hero_header{
+.hero-header{
 width: 60%;
 min-width: 1100px;
 position: absolute;
@@ -128,18 +140,59 @@ color: #fff;
 mix-blend-mode: overlay;
 }
 
-.hero_mainvisual{
+.hero-mainvisual{
 position: relative;
+width: 100%;
 height: 100%;
 background: linear-gradient(0deg, rgba(134,171,137,1) 0%, rgba(231,251,230,1) 100%);
 z-index: 0;
 }
 
-.hero_mainvisual img{
+.hero-mainvisual img{
 position: absolute;
 bottom: 0;
 left: 50%;
 transform: translate(-50%);
-width: 1400px;
+width: 80%;
 z-index: 1;
+}
+
+/* メッセージ
+======================== */
+.message-text-content{
+display: flex;
+gap: var(--size-L);
+flex-direction: column;
+justify-content: center;
+writing-mode: vertical-rl;
+text-orientation: upright;
+margin: auto;
+margin-top: var(--size-L);
+}
+.message-text {
+display: block;
+font-size: 1.2rem;
+}
+
+/* 製品情報
+======================== */
+.product-content{
+margin: auto;
+margin-top: var(--size-L);
+width: 100%;
+max-width: 1200px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: var(--size-L);
+}
+
+/* キービジュアル
+======================== */
+.keyword-wrapper{
+width: 100%;
+background: #fff;
+display: flex;
+place-items: center;
+overflow: hidden;
+text-wrap: nowrap;
 }
