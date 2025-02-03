@@ -14,7 +14,7 @@
 --size-S: 1rem;
 }
 
-.hero-wrapper,.message-wrapper,.products-wrapper,.keyvisual-wrapper{
+.hero-wrapper{
 height: 100vh;
 }
 
@@ -148,13 +148,36 @@ background: linear-gradient(0deg, rgba(134,171,137,1) 0%, rgba(231,251,230,1) 10
 z-index: 0;
 }
 
-.hero-mainvisual img{
+.mainvisual-img{
 position: absolute;
 bottom: 0;
 left: 50%;
 transform: translate(-50%);
 width: 80%;
 z-index: 1;
+}
+
+/* くるくる回るテキスト */
+.hero_scrollMe{
+position: absolute;
+width: 200px;
+aspect-ratio: 1;
+bottom: 10%;
+right: 5%;
+z-index: 5;
+color: var(--color-black);
+}
+
+.hero_scrollMe::after{
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: var(--color-white);
+width: 90px;
+aspect-ratio: 1;
+border-radius: 999px;
 }
 
 /* メッセージ
@@ -174,25 +197,45 @@ display: block;
 font-size: 1.2rem;
 }
 
+
 /* 製品情報
 ======================== */
+.products-wrapper{
+padding: 0 var(--size-XL);
+}
 .product-content{
 margin: auto;
 margin-top: var(--size-L);
 width: 100%;
+height: 100%;
 max-width: 1200px;
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 gap: var(--size-L);
 }
+.product-card{
+height: 100%;
+}
 
 /* キービジュアル
 ======================== */
 .keyword-wrapper{
+margin-top: var(--size-L);
 width: 100%;
 background: #fff;
 display: flex;
 place-items: center;
 overflow: hidden;
 text-wrap: nowrap;
+}
+.keyword{
+font-size: 50vh;
+}
+
+/* キービジュアル
+======================== */
+.footer_wrapper{
+height: 40vh;
+border-radius: 0 var(--size-XL) 0;
+background: var(--color-Sub03);
 }

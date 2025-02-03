@@ -13,7 +13,11 @@
 <body>
     <!-- ナビゲーションバー -->
     <nav class="nav-wrapper">
+
+        <!-- アイコン -->
         <div class="icon"><img src="img/svg/Botanica.svg" alt=""></div>
+
+        <!-- グローバルナビゲーション -->
         <div class="gnav-wrapper">
             <ul class="gnav-list">
                 <li class="gnav-item"><a href="">Home</a>
@@ -48,6 +52,8 @@
                 </li>
             </ul>
         </div>
+
+        <!-- ソーシャルアイコン -->
         <div class="social">
             <ul class="social-list">
                 <li class="social-item"><img src="img/svg/search.svg" alt=""></li>
@@ -57,11 +63,15 @@
         </div>
     </nav>
     <main>
+
         <!-- ヒーローセクション -->
         <section class="hero-wrapper">
             <div class="hero-header"><h1>Discover the Essence of Nature</h1></div>
-            <div class="hero-mainvisual"><img src="img/flower.png" alt=""></div>
-            <div class="hero-bg"></div>
+            <div class="hero-mainvisual"><img src="img/flower.png" class="mainvisual-img">
+            </div>
+            <div class="hero_scrollMe">
+                <img src="img/svg/scroll me.svg" class="scrollMe-img">
+            </div>
         </section>
 
         <!-- メッセージ部分 -->
@@ -70,13 +80,13 @@
                 <h2>About botanica</h2>
             </div>
             <div class="message-text-content">
-                <span class="message-text">優しさと効果を兼ね備えたボタニカルシャンプー。</span>
-                <span class="message-text">厳選された植物エキスを贅沢に配合した</span>
-                <span class="message-text">オーガニックラベンダー</span>
-                <span class="message-text">ローズマリー、アロエベラなど、</span>
-                <span class="message-text">自然の恵みを凝縮した贅沢な処方で、</span>
-                <span class="message-text">髪と地肌を優しくいたわりながら、</span>
-                <span class="message-text">健やかな美しさへと導きます</span>
+                <div class="message-text">優しさと効果を兼ね備えたボタニカルシャンプー。</div>
+                <div class="message-text">厳選された植物エキスを贅沢に配合した</div>
+                <div class="message-text">オーガニックラベンダー</div>
+                <div class="message-text">ローズマリー、アロエベラなど、</div>
+                <div class="message-text">自然の恵みを凝縮した贅沢な処方で、</div>
+                <div class="message-text">髪と地肌を優しくいたわりながら、</div>
+                <div class="message-text">健やかな美しさへと導きます</div>
         </div>
         </section>
 
@@ -96,7 +106,16 @@
                 </article>
 
                 <article class="product-card">
-                    <div class="product-img"><img src="img/shampoo (1).png" alt=""></div>
+                    <div class="product-img"><img src="img/shampoo (2).png" alt=""></div>
+                    <div class="product-detais">
+                        <h3 class="product-name">name</h3>
+                        <p class="product-name">price</p>
+                        <div class="product-color"></div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img"><img src="img/shampoo (3).png" alt=""></div>
                     <div class="product-detais">
                         <h3 class="product-name">name</h3>
                         <p class="product-name">price</p>
@@ -112,23 +131,45 @@
                         <div class="product-color"></div>
                     </div>
                 </article>
+
+                <article class="product-card">
+                    <div class="product-img"><img src="img/shampoo (2).png" alt=""></div>
+                    <div class="product-detais">
+                        <h3 class="product-name">name</h3>
+                        <p class="product-name">price</p>
+                        <div class="product-color"></div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-img"><img src="img/shampoo (3).png" alt=""></div>
+                    <div class="product-detais">
+                        <h3 class="product-name">name</h3>
+                        <p class="product-name">price</p>
+                        <div class="product-color"></div>
+                    </div>
+                </article>
+
             </div>
+
+            <div class="product-buttons">
+                <button>購入はこちら</button>
+                <button>もっと見る</button>
+            </div>
+
         </section>
 
         <!-- キービジュアル -->
         <section class="keyvisual-wrapper">
-            
             <div class="keyword-wrapper">
                 <p class="keyword">PURE INGREDIENTS, PURE RESULTS</p>
                 <p class="keyword">PURE INGREDIENTS, PURE RESULTS</p>
             </div>
-
-            <div class="keyvisual-header">
-                <h2>Pure Ingredients, Pure Results</h2>
-            </div>
         </section>
     </main>
-    <footer>
+
+    <!-- フッター -->
+    <footer class="footer_wrapper">
 
     </footer>
 </body>
