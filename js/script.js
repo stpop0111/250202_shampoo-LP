@@ -35,7 +35,7 @@ class ScrollTextAnimate{
         const infiniteScrollTL = gsap.timeline({
             repeat:-1,
         });
-        // スクロールに合わせて移動するように変更する。
+        // TODO:スクロールに合わせて移動するように変更する。
         infiniteScrollTL
         .to(this.scrollText,{
             x:'-100%',
