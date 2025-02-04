@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     new ScrollTextAnimate;
     new NavigationAnimate;
     // new OpeningAnimate;
-    // new FadeInAnimate;
+    new TextFadeInAnimate;
 });
 class NavigationAnimate{
     constructor(){
@@ -83,12 +83,52 @@ class ScrollTextAnimate{
         const infiniteScrollTL = gsap.timeline({
             repeat:-1,
         });
-        // TODO:スクロールに合わせて移動するように変更する。
         infiniteScrollTL
         .to(this.scrollText,{
             x:'-100%',
             duration: 75,
             ease: 'none'
         })
+    }
+}
+
+class TextFadeInAnimate{
+    constructor(){
+        this.text = document.querySelectorAll('.message-text');
+        //メッセージの分離
+        this.text.forEach(text => {
+            text.innerHTML = [...text.textContent]
+            .map(char => `<span class="char">${char}</span>`).join('');
+        });
+
+        gsap.set('.char',{
+            autoAlpha: 0,
+            scale: 1.2,
+            filter: 'blur(20px)',
+        });
+        gsap.set(this.text,{
+        })
+        this.init();
+    }
+
+    init(){
+        this.setupFadeInText();
+    }
+
+    // TODO:スクロールに合わせて順番に出てくる
+    setupFadeInText(){
+            const FadeInTL = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.message-wrapper',
+                    start: 'top center',
+                }
+            });
+            FadeInTL
+            .to('.char',{
+                scale: 1.0,
+                filter: 'blur(0px)',
+                autoAlpha: 1,
+                duration: 1,
+            })
     }
 }
