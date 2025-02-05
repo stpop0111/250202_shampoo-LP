@@ -18,15 +18,14 @@
 height: 100vh;
 }
 
-.products-header{
-width: auto;
-text-align: center;
-padding-top: var(--size-L);
-font-size: var(--size-L);
+.footer_wrapper,.nav-wrapper,.gnav-wrapper,.message-wrapper,.products-wrapper,.keyvisual-wrapper{
+padding: 0 var(--size-L);
 }
 
 img{
 width: 100%;
+height: 100%;
+object-fit: cover;
 }
 
 /* ナビゲーションバー
@@ -156,7 +155,7 @@ bottom: 0;
 left: 50%;
 transform: translate(-50%);
 width: 80%;
-min-width: 1000px;
+height: auto;
 z-index: 1;
 }
 
@@ -187,17 +186,18 @@ border-radius: 999px;
 ======================== */
 .message-wrapper{
 background: var(--color-Sub03);
-padding: 0 var(--size-XL);
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 }
-.message-header,.products-header{
+
+.message-header{
 width: auto;
 text-align: center;
 font-size: var(--size-L);
 }
+
 .message-text-content{
 display: flex;
 flex-direction: column;
@@ -207,6 +207,7 @@ padding-top: var(--size-L);
 writing-mode: vertical-rl;
 text-orientation: upright;
 }
+
 .message-text {
 display: block;
 font-size: 1.2rem;
@@ -215,29 +216,32 @@ font-size: 1.2rem;
 
 /* 製品情報
 ======================== */
-.products-wrapper{
-padding: 0 var(--size-XL);
+.products-header{
+width: auto;
+text-align: center;
+font-size: var(--size-L);
+padding-top: var(--size-L);
 }
+
 .product-content{
-margin: auto;
-margin-top: var(--size-L);
+padding-top: var(--size-L);
 width: 100%;
 height: 100%;
-max-width: 1200px;
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 gap: var(--size-L);
 }
+
 .product-card{
 height: 100%;
 }
 
-/* キービジュアル
+/* キーワード
 ======================== */
 .keyword-wrapper{
 margin-top: var(--size-L);
 width: 100%;
-background: #fff;
+background: var(--color-Sub02);
 display: flex;
 place-items: center;
 overflow: hidden;
@@ -246,12 +250,87 @@ text-wrap: nowrap;
 
 .keyword{
 font-size: 50vh;
+line-height: 1;
 }
 
 /* キービジュアル
+======================== */
+.keyvisual-wrapper{
+position: relative;
+height: 100vh;
+}
+
+.keyvisual-content{
+padding: var(--size-L);
+width: 100%;
+height: 100%;
+display: flex;
+gap: var(--size-L);
+}
+
+.keyvisual-block{
+width: 70%;
+}
+
+.keyvisual-header{
+font-size: 5vw;
+}
+
+.keyvisual-text{
+padding-top: var(--size-M);
+}
+.keyvisual-images{
+position: relative;
+width: 100%;
+height: 100%;
+overflow: hidden;
+padding: var(--size-M);
+background: var(--color-white);
+border-radius: 0 var(--size-XL) 0 0;
+}
+
+.keyvisual-img{
+position: absolute;
+}
+
+.keyvisual-img:nth-of-type(1){
+top: 35%;
+right: 30%;
+width: 40%;
+aspect-ratio: 1;
+z-index: 4;
+}
+
+.keyvisual-img:nth-of-type(2){
+top: 46%;
+left: 55%;
+width: 40%;
+aspect-ratio: 0.8;
+z-index: 3;
+}
+
+.keyvisual-img:nth-of-type(3){
+top: 40%;
+left: 5%;
+width: 35%;
+aspect-ratio: 0.789;
+z-index: 2;
+}
+
+.keyvisual-img:nth-of-type(4){
+top: 3%;
+left: 45%;
+width: 30%;
+aspect-ratio: 0.789;
+z-index: 1;
+}
+
+/* フッター
 ======================== */
 .footer_wrapper{
 height: 40vh;
 border-radius: 0 var(--size-XL) 0 0;
 background: var(--color-Sub03);
 }
+
+/* TODO:ボタンデザイン考える */

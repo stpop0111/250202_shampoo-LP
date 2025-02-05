@@ -10,19 +10,15 @@ class NavigationAnimate{
     constructor(){
         this.navigation = document.querySelector(".nav-wrapper");
         //初期化設定
-        gsap.set(this.navigation, {
-            autoAlpha: 0, //透過&非選択
-            y: '-100%', //初期位置を隠す
-            filter:'blur(20px)'
-        })
         this.animate();
     }
     
     animate(){
         gsap.to(this.navigation,{
             scrollTrigger:{
-                start:'top top', //ドキュメントの一番上
-                end: 'max', //ドキュメント全体
+                trigger: '.message-wrapper', // トリガーとなる要素
+                start: 'top top', // message-wrapperのトップがビューポートのトップに来た時に開始
+                end: 'max', // ドキュメント全体
                 //スクロールされる度に処理する内容
                 onUpdate:({direction, scroll}) => {
                     // direction: 向き
@@ -75,7 +71,7 @@ class ScrollMeAnimate{
 // keywardが無限にスクロールする
 class ScrollTextAnimate{
     constructor(){
-        this.scrollText = document.querySelector(".keyword");
+        this.scrollText = document.querySelectorAll(".keyword");
         this.animate();
     }
 
@@ -92,6 +88,8 @@ class ScrollTextAnimate{
     }
 }
 
+// メッセージ部分にアニメーション
+// TODO:もう少し変化をつける。
 class TextFadeInAnimate{
     constructor(){
         this.text = document.querySelectorAll('.message-text');
