@@ -115,20 +115,30 @@ class TextFadeInAnimate{
         this.setupFadeInText();
     }
 
-    // TODO:スクロールに合わせて順番に出てくる
     setupFadeInText(){
-            const FadeInTL = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.message-wrapper',
-                    start: 'top center',
-                }
-            });
-            FadeInTL
-            .to('.char',{
+        const fadeInTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.message-wrapper',
+                pin: true,
+                start: 'top top',
+                end: '+=300%',
+                pinSpaceing: false,
+            }
+        });
+
+        this.text.forEach((text, index)=>{
+            const char = text.querySelectorAll('.char');
+            fadeInTL
+            .to(char,{
                 scale: 1.0,
                 filter: 'blur(0px)',
                 autoAlpha: 1,
                 duration: 1,
-            })
+                stagger: {
+                    amount:2,
+                    from: "start"
+                }
+            }, index * 2);
+        });
     }
 }

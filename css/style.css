@@ -14,15 +14,14 @@
 --size-S: 1rem;
 }
 
-.hero-wrapper{
+.hero-wrapper,.message-wrapper{
 height: 100vh;
 }
 
-.message-header,.products-header{
+.products-header{
 width: auto;
-margin: auto;
-margin-top: var(--size-XL);
 text-align: center;
+padding-top: var(--size-L);
 font-size: var(--size-L);
 }
 
@@ -186,15 +185,27 @@ border-radius: 999px;
 
 /* メッセージ
 ======================== */
+.message-wrapper{
+background: var(--color-Sub03);
+padding: 0 var(--size-XL);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+.message-header,.products-header{
+width: auto;
+text-align: center;
+font-size: var(--size-L);
+}
 .message-text-content{
 display: flex;
-gap: var(--size-L);
 flex-direction: column;
 justify-content: center;
+gap: var(--size-L);
+padding-top: var(--size-L);
 writing-mode: vertical-rl;
 text-orientation: upright;
-margin: auto;
-margin-top: var(--size-L);
 }
 .message-text {
 display: block;
