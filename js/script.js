@@ -90,53 +90,34 @@ class ScrollTextAnimate{
 
 // メッセージ部分にアニメーション
 // TODO:もう少し変化をつける。
-class TextFadeInAnimate{
+class TextFadeInAnimate {
     constructor(){
-        this.text = document.querySelectorAll('.message-text');
-        //メッセージの分離
-        this.text.forEach(text => {
-            text.innerHTML = [...text.textContent]
-            .map(char => `<span class="char">${char}</span>`).join('');
-        });
+        this.container = document.querySelector('.message-wrapper');
+        this.textContent = document.querySelector('.message-text-content');
+        this.texts = document.querySelectorAll('.message-text');
 
-        gsap.set('.char',{
-            autoAlpha: 0,
-            scale: 1.2,
-            filter: 'blur(20px)',
-        });
-        gsap.set(this.text,{
-        })
-        this.init();
+        this.animate();
     }
 
-    init(){
-        this.setupFadeInText();
-    }
+    animate(){
+        const contentHeight = this.textContent.getBoundingClientRect().height;
+        const viewportHeight = this.container.offsetHeight;
 
-    setupFadeInText(){
-        const fadeInTL = gsap.timeline({
+        const textScrollTL = gsap.timeline({
             scrollTrigger: {
-                trigger: '.message-wrapper',
+                trigger: this.container, //messsage-wrapper
                 pin: true,
                 start: 'top top',
-                end: '+=300%',
-                pinSpaceing: false,
+                scrub: 1,
+                end: `+=${((contentHeight-viewportHeight) / viewportHeight * 100) + 100}%`, //表示領域に対してコンテンツの高さで計算してスクロールが必要な割合を出す
+                onUpdate: (self)  => { //スクロールするたびに起こす処理
+                    gsap.set(this.textContent,{
+                        y: -(contentHeight - viewportHeight) * self.progress, //スクロールできる量 * 現在のスクロール量 = 動かす場所
+                        force3D: true,
+                    });
+                    ScrollTrigger.update();
+                },
             }
-        });
-
-        this.text.forEach((text, index)=>{
-            const char = text.querySelectorAll('.char');
-            fadeInTL
-            .to(char,{
-                scale: 1.0,
-                filter: 'blur(0px)',
-                autoAlpha: 1,
-                duration: 1,
-                stagger: {
-                    amount:2,
-                    from: "start"
-                }
-            }, index * 2);
         });
     }
 }

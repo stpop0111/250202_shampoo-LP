@@ -14,7 +14,7 @@
 --size-S: 1rem;
 }
 
-.hero-wrapper,.message-wrapper{
+.hero-wrapper{
 height: 100vh;
 }
 
@@ -185,16 +185,40 @@ border-radius: 999px;
 /* メッセージ
 ======================== */
 .message-wrapper{
-background: var(--color-Sub03);
 display: flex;
 flex-direction: column;
-align-items: center;
-justify-content: center;
+overflow: hidden;
+position: relative;
+background: var(--color-Sub03);
+height: 100vh;
+}
+
+.message-images{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.message-img:nth-of-type(1){
+position: absolute;
+top: 20%;
+left: clamp(20%, 5vw, 20%);
+max-width: clamp(200px, 20vw, 400px);
+transform: scaleX(-1);
+}
+
+.message-img:nth-of-type(2){
+position: absolute;
+top: 40%;
+right: clamp(25%, 15vw, 30%);
+max-width: clamp(200px, 20vw, 400px);
 }
 
 .message-header{
 width: auto;
-text-align: center;
+margin: 0 auto;
 font-size: var(--size-L);
 }
 
@@ -202,15 +226,17 @@ font-size: var(--size-L);
 display: flex;
 flex-direction: column;
 justify-content: center;
-gap: var(--size-L);
+gap: var(--size-XL);
 padding-top: var(--size-L);
-writing-mode: vertical-rl;
-text-orientation: upright;
+padding-bottom: var(--size-L);
+margin: 0 auto;
+text-align: center;
 }
 
 .message-text {
 display: block;
-font-size: 1.2rem;
+font-size: 1.5rem;
+line-height: 1.8;
 }
 
 
