@@ -27,6 +27,61 @@ width: 100%;
 height: 100%;
 object-fit: cover;
 }
+/* ナビゲーションバー
+======================== */
+.loading{
+position: fixed;
+top: 0;
+left: 0;
+z-index: 999;
+width: 100%;
+height: 100vh;
+background-color: #fff;
+}
+
+.loading_wrapper{
+position: relative;
+}
+
+.loading-images{
+position: absolute;
+}
+
+.loading-icon{
+position: absolute;
+width: 80%;
+min-width: 400px;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.animate-leaf{
+position: fixed;
+z-index: 800;
+height: 100vh;
+width: 100%;
+}
+
+.animate-images{
+position: relative;
+display: flex;
+width: 100%;
+height: 100%;
+}
+
+.animate-images .leaf{
+position: absolute;
+height: 120%;
+}
+
+.animate-images .leaf:nth-child(1){
+left: 10%;
+}
+
+.animate-images .leaf:nth-child(2){
+right: 10%;
+}
 
 /* ナビゲーションバー
 ======================== */
@@ -73,6 +128,7 @@ width: 20px;
 height: auto;
 transition: transform 0.3s ease;
 }
+
 .gnav-item:hover::after{
 transform:rotate(180deg);
 }
@@ -80,7 +136,7 @@ transform:rotate(180deg);
 /* ドロップダウンメニュー */
 .dropdown{
 position: absolute;
-top: 100%;
+top: 150%;
 left: 0;
 background: #CBE2B5;
 min-width: 200px;
@@ -93,16 +149,19 @@ border-radius: 4px;
 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 z-index: 11;
 }
+
 .gnav-item:hover .dropdown{
 opacity: 1;
 visibility: visible;
 transform: translateY(0);
 }
+
 .dropdown li a {
 display: block;
 padding: 0.8rem 1rem;
 transition: all 0.2s ease;
 }
+
 .dropdown li a:hover {
 background: var(--color-Sub03);
 }
@@ -185,35 +244,13 @@ border-radius: 999px;
 /* メッセージ
 ======================== */
 .message-wrapper{
+width: 100%;
+height: 100vh;
 display: flex;
 flex-direction: column;
 overflow: hidden;
 position: relative;
 background: var(--color-Sub03);
-height: 100vh;
-}
-
-.message-images{
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-}
-
-.message-img:nth-of-type(1){
-position: absolute;
-top: 20%;
-left: clamp(20%, 5vw, 20%);
-max-width: clamp(200px, 20vw, 400px);
-transform: scaleX(-1);
-}
-
-.message-img:nth-of-type(2){
-position: absolute;
-top: 40%;
-right: clamp(25%, 15vw, 30%);
-max-width: clamp(200px, 20vw, 400px);
 }
 
 .message-header{
@@ -234,9 +271,41 @@ text-align: center;
 }
 
 .message-text {
+position: relative;
 display: block;
 font-size: 1.5rem;
 line-height: 1.8;
+}
+
+.message-images{
+position: absolute;
+top:0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.message-img{
+position:absolute;
+top: 0;
+left: 0;
+width: 400px;
+transform: translate(-50%, -50%);
+}
+
+.message-img:nth-of-type(1){
+top: 50%;
+left: 30%;
+}
+
+.message-img:nth-of-type(2){
+top: 30%;
+left: 70%;
+}
+
+.message-img:nth-of-type(3){
+top: 80%;
+left: 75%;
 }
 
 

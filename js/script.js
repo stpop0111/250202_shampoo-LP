@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     new ScrollMeAnimate;
     new ScrollTextAnimate;
     new NavigationAnimate;
-    // new OpeningAnimate;
+    new OpeningAnimate;
     new TextFadeInAnimate;
 });
+
 class NavigationAnimate{
     constructor(){
         this.navigation = document.querySelector(".nav-wrapper");
@@ -89,7 +90,6 @@ class ScrollTextAnimate{
 }
 
 // メッセージ部分にアニメーション
-// TODO:もう少し変化をつける。
 class TextFadeInAnimate {
     constructor(){
         this.container = document.querySelector('.message-wrapper');
@@ -119,5 +119,76 @@ class TextFadeInAnimate {
                 },
             }
         });
+    }
+}
+
+class OpeningAnimate{
+    constructor(){
+        this.tl = gsap.timeline();
+
+        gsap.set('.mainvisual-img',{
+            scale:0,
+        })
+        document.querySelector("body").style.overflow = "hidden"
+        this.animate();
+    }
+
+    animate(){
+        this.tl
+        // ローディング画面を閉じる
+        .to('.loading',{
+            y:'-100%',
+            filter: 'blur(20px)',
+            duration: 1,
+            ease:'power4.inOut',
+            onComplete: () => {
+                document.querySelector('.loading')?.remove();
+            }
+        })
+
+
+        // 葉っぱと回転させる
+        .to('.leaf01', {
+            rotation: 45,
+            transformOrigin: 'left top',
+            duration: 1,
+            ease: 'power2.inOut'
+        },'-=0.8')
+        .to('.leaf02', {
+            rotation: -45,
+            transformOrigin: 'right top',
+            duration: 1,
+            ease: 'power2.inOut'
+        },'<')
+
+        // 葉っぱを非表示にする
+        .to('.animate-leaf',{
+            autoAlpha: 0,
+            duration: 1,
+            onComplete: () => {
+                document.querySelector('.animate-leaf')?.remove();
+            }
+        },'-=0.5')
+
+        // 花が拡大登場
+        .to('.mainvisual-img',{
+            scale:1,
+            duration: 1,
+            transformOrigin: 'center bottom',
+        },'<')
+
+        // ナビゲーションバーが降りてくる
+        .fromTo('.nav-wrapper',
+            {
+                y:'-100%',
+            },
+            {
+                y:0,
+                duration: 0.3,
+
+                onComplete: () => {
+                    document.querySelector("body").style.overflow = "auto"
+                }
+            },'-=0.2')
     }
 }
