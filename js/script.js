@@ -125,16 +125,80 @@ class TextFadeInAnimate {
 
 class OpeningAnimate{
     constructor(){
-        this.tl = gsap.timeline();
+        this.tl = gsap.timeline({
+            paused: true,
+        });
 
         gsap.set('.mainvisual-img',{
             scale:0,
         })
+
         document.querySelector("body").style.overflow = "hidden"
-        this.animate();
+        
+        this.initDrag(); //ドラッグ状態の初期化
+        this.setupAnimation(); //ドラッグ後のアニメーション
     }
 
-    animate(){
+    initDrag() {
+        const loadingElement = document.querySelector('.loading');
+        const self = this; //???
+        let startY;
+        let isDragging = false;
+
+        Draggable.create(loadingElement, {
+            type: "y", //縦方向に動かす。
+            bounds: { //当たり判定
+                minY: -window.innerHeight, //最も下：今見ているウィンドウの一番下
+                maxY: 0, //最も高い位置：要素の一番上
+            },
+            inertia: true, // ???
+
+            onDragStart : () => { //ドラッグが始まった時の処理
+                startY = this.y; //今掴んでる位置を最も下とする
+                isDragging = true; //ドラッグ状態をON
+            },
+
+            onDrag: function() {
+                const currentPull = this.y; //現在掴んでいる位置 = 要素のy //ここのthisはdraggableを指す
+                const progress = Math.abs(currentPull) / (window.innerHeight * 0.3); //?
+                
+                gsap.to(loadingElement, { //ドラッグ中のエフェクト
+                    filter: `blur(${progress * 20}px)`, //ブラーをかける量を現在の量に合わせる
+                    duration: 0.1
+                });
+            },
+
+            onDragEnd: function() { //ドラッグが終わった時の処理
+                const threhold = -window.innerHeight * 0.3; //画面の30%まで引っ張ったら発動
+                
+                if(this.y < threhold) { //現在の高さが30%以上の時
+                    
+                    this.disable(); // ドラッグ不可にする
+
+                    gsap.to(loadingElement, { //上に完全に移動
+                        y: -window.innerHeight,
+                        filter: 'blur(20px)',
+                        duration: 0.5,
+                        ease: 'power4.inOut',
+
+                        onComplete: ()=> {
+                            self.tl.play();
+                        }
+                    });
+                } else {
+                    gsap.to(loadingElement, { //元の位置に移動
+                        y: 0,
+                        filter: 'blur(0px)',
+                        duration: 0.5,
+                        ease: 'power2.out',
+                    });
+                }
+            }
+
+        })
+    }
+
+    setupAnimation(){
         this.tl
         // ローディング画面を閉じる
         .to('.loading',{
