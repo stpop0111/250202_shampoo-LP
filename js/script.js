@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(Draggable);
     new ScrollMeAnimate;
     new ScrollTextAnimate;
     new NavigationAnimate;
